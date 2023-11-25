@@ -1,0 +1,15 @@
+{
+  "name": "few-node-api",
+  "version": "1.0.0",
+  "description": "Some code about node and rest apis just for fun. By:Hidilson45",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hidilson45",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
+  }
+}
