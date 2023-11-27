@@ -6,47 +6,47 @@ app.use(express.json())
 const PORT = 3000
 
 
-const Movie = mongoose.model('Movie', {
-    tittle: String,
-    description: String,
-    image: String,
-    duration: Number,
-    trailer: String
+const Person = mongoose.model('Person', {
+    name: String,
+    country: String,
+    info: String,
+    id: Number,
+    description: String
 })
 
 app.get('/', async(request,response) => {
-    const movies = await Movie.find()
-    response.send(movies)
+    const persons = await Person.find()
+    response.send(persons)
 })
 
 app.delete('/:id', async(request, response)=>{
-    const movie = await Movie.findByIdAndDelete(request.params.id)
-    return response.send(movie)
+    const person = await Person.findByIdAndDelete(request.params.id)
+    return response.send(person)
 })
 
 app.put('/:id', async(request, response)=>{
-    const movie = await Movie.findByIdAndUpdate(request.params.id, {
-        tittle: request.body.tittle,
-        description: request.body.description,
-        image: request.body.image_url,
-        duration: request.body.duration,
-        trailer: request.body.trailer_url
+    const person = await Person.findByIdAndUpdate(request.params.id, {
+        name: request.body.name,
+        country: request.body.country,
+        info: request.body.info,
+        id: request.body.id,
+        description: request.body.description
     })
 
-    return response.send(movie)
+    return response.send(person)
 })
 
 app.post('/', async(request,response)=>{
-    const movie = new Movie({
-        tittle: request.body.tittle,
-        description: request.body.description,
-        image: request.body.image_url,
-        duration: request.body.duration,
-        trailer: request.body.trailer_url
+    const person = new Person({
+        name: request.body.name,
+        country: request.body.country,
+        info: request.body.info,
+        id: request.body.id,
+        description: request.body.description
     })
 
-    await movie.save()
-    response.send(movie)
+    await person.save()
+    response.send(person)
 })
 
 app.listen(PORT,() => {
